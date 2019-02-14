@@ -1,3 +1,19 @@
 <p>
   login works!
+  {{title}}
+  
 </p>
+
+<div *ngFor="let item of dataset;">
+   <table class="table">
+      <tr>
+        <td>NAMe: {{item.name}}</td>
+        <td>age:{{item.age}}</td>
+        <td>cars:{{item.cars}}</td>
+        <td *ngFor="let innerobject of item.prevEXp;" >
+            company:{{innerobject.company}}
+            years:{{innerobject.years}}
+        </td>
+      </tr>   
+</table>
+</div>
