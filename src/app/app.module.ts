@@ -14,6 +14,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { BlogComponent } from './blog/blog.component';
 import { FeaturesComponent } from './features/features.component';
 import { ContactComponent } from './contact/contact.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 const routes: Routes = [
     {path: '', pathMatch: 'full',  redirectTo: 'home'},
@@ -24,6 +26,8 @@ const routes: Routes = [
     {path: 'blog',component: BlogComponent},
     {path: 'featuers',component: FeaturesComponent},
     {path: 'contact',component: ContactComponent},
+    {path: 'parent',component: ParentComponent},
+    {path: 'child',component: ChildComponent},
   
   ];
 
@@ -42,7 +46,9 @@ const routes: Routes = [
     PortfolioComponent,
     BlogComponent,
     FeaturesComponent,
-    ContactComponent
+    ContactComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
