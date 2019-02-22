@@ -1,43 +1,69 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-  
-})
+
+@Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
+    loginForm: FormGroup;
+    loading = false;
+    submitted = false;
+    returnUrl: string;
+    mainmodel = Array();
+    arr: any[]=[];  
+    aValue:any;
+   
 
-  title: string;
-  myHero: string;
-  dataset:any;
+    constructor(
+        private formBuilder: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+     ) {}
 
-  constructor() {
+    ngOnInit() {
+   
+            this.loginForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required]
+        });
 
-    this.title = 'Tour of Heroes';
-    this.myHero = 'Windstorm';
+        // reset login status
+     
 
-    this.dataset = [
-      {
-      "name":"Suneel",
-      "age":30,
-      "cars":[ "Ford", "BMW", "Fiat" ],
-      "prevEXp":[{"company":"synvers","years":"2"},{"company":"ipay","years":"2"}]
-      },
-      {
-      "name":"sai",
-      "age":20,
-      "cars":[ "indica", "Baleno", "shift" ],
-      "prevEXp":[{"company":"IBM","years":"1"},{"company":"kellton","years":"0"}]
-      }
-      ];  
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
+    // convenience getter for easy access to form fields
+    get f() { return this.loginForm.controls; }
+
+    onSubmit() {
+
+
+      alert('jashi');  
+      console.log('jashi');
+      var data = this.loginForm.value;
+      var formusername = data.username;
+      var formpassword = data.password;
+      // console.log(formusername);
+     // console.log(formpassword);
+
+  this.aValue = localStorage.getItem('mainmodel');
+
+  for (var key in this.aValue) {
       
-   }
+        console.log(this.aValue[key]);    
+}
 
-  ngOnInit() {
+        this.submitted = true;
 
-  
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+            return;
+        }
 
-  }
-
+        this.loading = true;
+       
+    }
 }

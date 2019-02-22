@@ -1,3 +1,8 @@
 <p>
   child works!
 </p>
+<input type="text" [class.show]="showButtons.q1" placeholder="Answer 1">
+<button (click)="toggleButton('q1')">Show question 1</button>
+
+<input type="text" [class.show]="showButtons.q2" placeholder="Answer 2">
+<button (click)="toggleButton('q2')">Show question 2</button>

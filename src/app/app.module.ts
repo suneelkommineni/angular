@@ -1,8 +1,13 @@
+//Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+//Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +21,13 @@ import { FeaturesComponent } from './features/features.component';
 import { ContactComponent } from './contact/contact.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { RegisterComponent } from './register/register.component';
+
+
+
+
+
+
 
 const routes: Routes = [
     {path: '', pathMatch: 'full',  redirectTo: 'home'},
@@ -28,12 +40,11 @@ const routes: Routes = [
     {path: 'contact',component: ContactComponent},
     {path: 'parent',component: ParentComponent},
     {path: 'child',component: ChildComponent},
-  
+    {path: 'register',component: RegisterComponent},  
+    { path: '**', redirectTo: '' },
+
+
   ];
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,12 +59,16 @@ const routes: Routes = [
     FeaturesComponent,
     ContactComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
     ],
   exports: [
@@ -63,5 +78,6 @@ const routes: Routes = [
 
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
