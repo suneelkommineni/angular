@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
     mainmodel = Array();
     arr: any[]=[];  
     aValue:any;
+    storageData: any[]=[];
    
 
     constructor(
@@ -49,7 +50,10 @@ export class LoginComponent implements OnInit {
       // console.log(formusername);
      // console.log(formpassword);
 
-  this.aValue = localStorage.getItem('mainmodel');
+
+  
+  this.storageData= JSON.parse(localStorage.getItem('mainmodel'));
+
 
   for (var key in this.aValue) {
       

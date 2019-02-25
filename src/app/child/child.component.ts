@@ -1,31 +1,53 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CountriesService } from '../countries.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-child',
-  template: `
-      <button (click)="sendMessage()">Send Message</button>
-  `,
+  templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent {
+export class ChildComponent implements OnInit {
 
-  suneel: string = "working ....."
+  stateInfo: any[] = [];
+  countryInfo: any[] = [];
+  cityInfo: any[] = [];
+
+
+
+  constructor(private country:CountriesService ,private router:Router) { }
+
   
-  showButtons: any = {
-    q1: false,
-    q2: false
-}
 
-toggleButton(button: string): void {
-    this.showButtons[button] = !this.showButtons[button]
-}
-
-  @Output() messageEvent = new EventEmitter<string>();
-
-  constructor() { }
-
-  sendMessage() {
-
-    this.messageEvent.emit(this.suneel);
+  ngOnInit() {
+   // alert(this.router.url );
+    this.getCountries();
   }
+
+
+  getCountries(){
+    this.country.allCountries().
+    subscribe(
+      data2 => {
+        this.countryInfo=data2.Countries;
+        //console.log('Data:', this.countryInfo);
+      },
+      err => console.log(err),
+      () => console.log('complete')
+    )
+  }
+
+  onChangeCountry(countryValue) {
+    this.stateInfo=this.countryInfo[countryValue].States;
+    this.cityInfo=this.stateInfo[0].Cities;
+    console.log(this.cityInfo);
+  }
+
+  onChangeState(stateValue) {
+    this.cityInfo=this.stateInfo[stateValue].Cities;
+    //console.log(this.cityInfo);
+  }
+    
+
 }

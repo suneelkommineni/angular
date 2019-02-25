@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+
 //Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +23,13 @@ import { ContactComponent } from './contact/contact.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { RegisterComponent } from './register/register.component';
+
+import { CountriesService } from './countries.service';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+
+import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -41,6 +49,7 @@ const routes: Routes = [
     {path: 'parent',component: ParentComponent},
     {path: 'child',component: ChildComponent},
     {path: 'register',component: RegisterComponent},  
+    {path: 'datepicker',component: DatepickerComponent}, 
     { path: '**', redirectTo: '' },
 
 
@@ -61,6 +70,7 @@ const routes: Routes = [
     ParentComponent,
     ChildComponent,
     RegisterComponent,
+    DatepickerComponent,
     
   ],
   imports: [
@@ -69,14 +79,16 @@ const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    DlDateTimePickerDateModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
     ],
   exports: [
     RouterModule
 ],
 
 
-  providers: [],
+  providers: [CountriesService],
   bootstrap: [AppComponent]
   
 })
