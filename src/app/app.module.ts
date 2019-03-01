@@ -6,6 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgDatepickerModule } from 'ng2-datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DataTableModule} from "angular-6-datatable";
+
 
 
 //Components
@@ -23,17 +27,13 @@ import { ContactComponent } from './contact/contact.component';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { RegisterComponent } from './register/register.component';
-
 import { CountriesService } from './countries.service';
+import { ApiserviceService } from './apisintegration/apiservice.service';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 
-import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-
-
+//import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
+import { DatatableComponent } from './datatable/datatable.component';
+import { ApisintegrationComponent } from './apisintegration/apisintegration.component';
 
 
 
@@ -50,11 +50,14 @@ const routes: Routes = [
     {path: 'child',component: ChildComponent},
     {path: 'register',component: RegisterComponent},  
     {path: 'datepicker',component: DatepickerComponent}, 
+    {path: 'datatable',component: DatatableComponent}, 
     { path: '**', redirectTo: '' },
-
-
   ];
+
+
+
 @NgModule({
+
   declarations: [
     AppComponent,
     LoginComponent,
@@ -71,25 +74,31 @@ const routes: Routes = [
     ChildComponent,
     RegisterComponent,
     DatepickerComponent,
-    
+    DatatableComponent,
+    ApisintegrationComponent,    
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    DataTableModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DlDateTimePickerDateModule,
+    NgDatepickerModule,
+    //DlDateTimePickerDateModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule
     ],
+
   exports: [
     RouterModule
 ],
 
 
-  providers: [CountriesService],
+  providers: [CountriesService,ApiserviceService],
   bootstrap: [AppComponent]
   
 })
+
 export class AppModule { }
