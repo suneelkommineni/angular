@@ -1,0 +1,43 @@
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>salary</th>
+          <th>Action</th>
+      
+        </tr>
+        </thead>
+      
+        <tbody>
+            <tr *ngFor="let item of employee">
+
+                <td>
+                {{item.empId}}
+                </td>
+                <td>
+                  {{item.empName}}
+                </td><td>
+                  {{item.empsalary}}
+                </td>
+                <td>
+                  <button type="button" (click)="details(item.empId)" >Check</button>      
+                </td>
+            
+              </tr>
+        
+      
+      </tbody>
+      
+      </table>
+    
+      <div>
+          {{data}}
+      </div>
+    
+    
+    </div>
+    
+    

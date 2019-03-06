@@ -34,6 +34,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 //import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
 import { DatatableComponent } from './datatable/datatable.component';
 import { ApisintegrationComponent } from './apisintegration/apisintegration.component';
+import { DynamictableComponent } from './dynamictable/dynamictable.component';
+import { EmployeComponent } from './employe/employe.component';
 
 
 
@@ -51,6 +53,8 @@ const routes: Routes = [
     {path: 'register',component: RegisterComponent},  
     {path: 'datepicker',component: DatepickerComponent}, 
     {path: 'datatable',component: DatatableComponent}, 
+    {path: 'dynamictable',component: DynamictableComponent}, 
+    {path: 'employe',component: EmployeComponent}, 
     { path: '**', redirectTo: '' },
   ];
 
@@ -75,7 +79,9 @@ const routes: Routes = [
     RegisterComponent,
     DatepickerComponent,
     DatatableComponent,
-    ApisintegrationComponent,    
+    ApisintegrationComponent,
+    DynamictableComponent,
+    EmployeComponent,    
   ],
 
   imports: [
