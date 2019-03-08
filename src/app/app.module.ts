@@ -36,6 +36,8 @@ import { DatatableComponent } from './datatable/datatable.component';
 import { ApisintegrationComponent } from './apisintegration/apisintegration.component';
 import { DynamictableComponent } from './dynamictable/dynamictable.component';
 import { EmployeComponent } from './employe/employe.component';
+import { ParentcourseComponent } from './parentcourse/parentcourse.component';
+import { ChildcourseComponent } from './childcourse/childcourse.component';
 
 
 
@@ -55,6 +57,8 @@ const routes: Routes = [
     {path: 'datatable',component: DatatableComponent}, 
     {path: 'dynamictable',component: DynamictableComponent}, 
     {path: 'employe',component: EmployeComponent}, 
+    {path: 'parentcourse',component: ParentcourseComponent}, 
+
     { path: '**', redirectTo: '' },
   ];
 
@@ -81,7 +85,9 @@ const routes: Routes = [
     DatatableComponent,
     ApisintegrationComponent,
     DynamictableComponent,
-    EmployeComponent,    
+    EmployeComponent,
+    ParentcourseComponent,
+    ChildcourseComponent,    
   ],
 
   imports: [

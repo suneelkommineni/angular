@@ -1,6 +1,6 @@
 
 <div class="container">
-        <h2>Register</h2>
+<h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
     <div class="form-group">
         <label for="firstName">First Name</label>
@@ -56,7 +56,7 @@
     <div class="form-group">
             <label for="employeid">Employe ID</label>
             <input type="text" formControlName="employeid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.employeid.errors }" />
-            <div *ngIf="submitted && f.employeid.errors" class="invalid-feedback">
+            <div *ngIf="submitted && f.employeid.errors" class="invalid-feedback" >
                 <div *ngIf="f.employeid.errors.required">employe id is required</div>
                 <div *ngIf="f.employeid.errors.minlength">employe id must be  4 characters</div>
             </div>
