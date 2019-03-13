@@ -20,13 +20,13 @@ export class ChildcourseComponent implements OnInit {
       "courseId":2,
       "courseName":"Angular JS",
       "courseFee":1000,
-        "courseDescription":"Angular Js is server side language"
+      "courseDescription":"Angular Js is server side language"
   },
   {
     "courseId":3,
     "courseName":"Php",
     "courseFee":1000,
-        "courseDescription":"Php is server side language"
+    "courseDescription":"Php is server side language"
 },
 {
   "courseId":4,

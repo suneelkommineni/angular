@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ChangeDetectionStrategy,  ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 function passwordConfirming( c: AbstractControl): any {
     if(!c.parent || !c) return;
@@ -15,7 +17,11 @@ function passwordConfirming( c: AbstractControl): any {
 }
 
 
-@Component({templateUrl: 'register.component.html'})
+@Component({
+    templateUrl: 'register.component.html',
+    styleUrls: ['./register.component.css'],
+encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,})
 export class RegisterComponent implements OnInit {
   model: any = {};
   mainmodel = Array();
@@ -45,6 +51,7 @@ export class RegisterComponent implements OnInit {
             password: ['', [Validators.required,Validators.minLength(6)]],
             confirmpassword: ['', [Validators.required,Validators.minLength(6) ,  passwordConfirming ]],
             employeid: ['', [Validators.required,Validators.minLength(4) ]],
+            dates: ['', [Validators.required]],
         });
     }
 
@@ -68,7 +75,7 @@ export class RegisterComponent implements OnInit {
         //  localStorage.setItem("mainmodel",JSON.stringify(this.data));
 
       if ("mainmodel" in localStorage){
-          console.log('jashi');
+        console.log('jashi');
         this.data= JSON.parse(localStorage.getItem('mainmodel'));
         console.log('jashi2');
         console.log(this.data);

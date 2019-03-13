@@ -5,7 +5,9 @@ import { first } from 'rxjs/operators';
 
 
 @Component({templateUrl: 'login.component.html'})
+
 export class LoginComponent implements OnInit {
+
     loginForm: FormGroup;
     loading = false;
     submitted = false;
@@ -14,12 +16,14 @@ export class LoginComponent implements OnInit {
     arr: any[]=[];  
     aValue:any;
     storageData: any[]=[];
+    loginStatus:boolean=false;
    
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
+
      ) {}
 
     ngOnInit() {
@@ -40,34 +44,36 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-
-
-      alert('jashi');  
-      console.log('jashi');
+/* from submitted values */
       var data = this.loginForm.value;
       var formusername = data.username;
       var formpassword = data.password;
-      // console.log(formusername);
-     // console.log(formpassword);
+   /* from submitted values */  
+
+    //   alert(formusername);
+    //   alert(formpassword);
 
 
   
   this.storageData= JSON.parse(localStorage.getItem('mainmodel'));
+  console.log(this.storageData);  
+  for(let i=0;i<this.storageData.length;i++)
+  {
+      var storageusernames = [];
+      var newDta = storageusernames.push(this.storageData[i].firstName);
+    if(formusername==this.storageData[i].firstName && formpassword==this.storageData[i].password)
+    { 
+     alert("Login successfull");
+     this.router.navigate(['/home']);
+     this.loginStatus=true;
+    }    
+     
+  } 
 
-
-  for (var key in this.aValue) {
-      
-        console.log(this.aValue[key]);    
-}
-
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
+  if(this.loginStatus == false ){
+      alert("login failure");
+    this.router.navigate(['/login']);
+} 
        
     }
 }

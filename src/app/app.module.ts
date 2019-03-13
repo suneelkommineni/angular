@@ -8,7 +8,9 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DataTableModule} from "angular-6-datatable";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime'
+
+
 
 
 
@@ -32,7 +34,7 @@ import { ApiserviceService } from './apisintegration/apiservice.service';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 
 //import { DlDateTimePickerDateModule } from 'angular-bootstrap-datetimepicker';
-import { DatatableComponent } from './datatable/datatable.component';
+// import { DatatableComponent } from './datatable/datatable.component';
 import { ApisintegrationComponent } from './apisintegration/apisintegration.component';
 import { DynamictableComponent } from './dynamictable/dynamictable.component';
 import { EmployeComponent } from './employe/employe.component';
@@ -54,10 +56,11 @@ const routes: Routes = [
     {path: 'child',component: ChildComponent},
     {path: 'register',component: RegisterComponent},  
     {path: 'datepicker',component: DatepickerComponent}, 
-    {path: 'datatable',component: DatatableComponent}, 
+    // {path: 'datatable',component: DatatableComponent}, 
     {path: 'dynamictable',component: DynamictableComponent}, 
     {path: 'employe',component: EmployeComponent}, 
     {path: 'parentcourse',component: ParentcourseComponent}, 
+    
 
     { path: '**', redirectTo: '' },
   ];
@@ -82,7 +85,7 @@ const routes: Routes = [
     ChildComponent,
     RegisterComponent,
     DatepickerComponent,
-    DatatableComponent,
+    // DatatableComponent,
     ApisintegrationComponent,
     DynamictableComponent,
     EmployeComponent,
@@ -94,11 +97,12 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    DataTableModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgDatepickerModule,
-    //DlDateTimePickerDateModule,
+    BrowserModule, 
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule
     ],
