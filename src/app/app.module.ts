@@ -60,6 +60,7 @@ const routes: Routes = [
     {path: 'dynamictable',component: DynamictableComponent}, 
     {path: 'employe',component: EmployeComponent}, 
     {path: 'parentcourse',component: ParentcourseComponent}, 
+    {path: 'apisintegration',component: ApisintegrationComponent}, 
     
 
     { path: '**', redirectTo: '' },

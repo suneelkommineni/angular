@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule  } from '@angular/common/http';
-// import { Observable } from  "rxjs";
-// import { Subscription } from 'rxjs';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/catch';
-// import 'rxjs/add/observable/throw';
-
-import { HttpClient } from  "@angular/common/http";
-
-
+import { ApiserviceService } from '../apisintegration/apiservice.service';
+import { ActivatedRoute, Router } from '@angular/router';
+declare var $:any;
 @Component({
   selector: 'app-apisintegration',
   templateUrl: './apisintegration.component.html',
@@ -16,13 +9,23 @@ import { HttpClient } from  "@angular/common/http";
 })
 export class ApisintegrationComponent implements OnInit {
 
-  constructor() { }
-  
-
-  ngOnInit() {
+  constructor(public rest:ApiserviceService, private route: ActivatedRoute, private router: Router) { }
+  products:any = [];
 
 
+  ngOnInit() {    
+      $(document).ready(function() {
+      $('#example').DataTable();
+  } );
+      this.getProducts();
   }
 
+  getProducts() {
+    this.products = [];
+    this.rest.getProducts().subscribe((data: {}) => {
+    console.log(data);
+    this.products = data;
+    });
+  }
 
 }

@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+
+const endpoint = 'https://jsonplaceholder.typicode.com/todos/1';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+
+    };
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +17,16 @@ import { HttpClient } from '@angular/common/http';
 
 export class ApiserviceService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
+  
+  private extractData(res: Response) {
+    let body = res;
+    return body || { };
+  }
 
-
-  getAllRecords(){
-
-    return this.http.get('http://jsonplaceholder.typicode.com/posts');
-    
-    }
+  getProducts(): Observable<any> {
+  return this.http.get(endpoint).pipe(
+  map(this.extractData));
+  }
     
 }

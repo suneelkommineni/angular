@@ -8,7 +8,7 @@ import { first } from 'rxjs/operators';
 
 export class LoginComponent implements OnInit {
 
-    loginForm: FormGroup;
+    loginForm : FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-
      ) {}
 
     ngOnInit() {
